@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools >= 64.0", "wheel"]
+build-backed = "setuptools.build_meta"
+
+
+[project]
+name = "sdf-tool"
+version = "0.1.0"
+description = "Tool for working with SDF"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Pavel Křupala", email = "pavel.krupala@gmail.com"}
+]
+keywords = ["sdf", "command-line", "tool"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["dependencies"]
+
+# This creates the CLI command
+[project.scripts]
+sdf-tool = "sdf_tool.sdf_tool:main"
+
+# dependencies
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+#optional-dependencies.dev = {file = ["requirements-dev.txt"]}
+#optional-dependencies.test = {file = ["requirements-test.txt"]}
+
+
+# auto-discover packages
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
